@@ -1,0 +1,15 @@
+http:
+  routers:
+    catchall:
+      # What entrypoints are we going to listen to with this router.
+      entryPoints: 
+      - web
+      # rule will check if incomming traffic complies with the request Host and prefix defined below
+      rule: "(Host(`host.fik.life`) && PathPrefix(`/path`)) || Host(`other.host.com`)"
+      service: service-name
+  services:
+    service-name:
+      # Define a service and where (servers) traffic will be routed
+      loadBalancer:
+        servers:
+        - url: "http://url.destination-host.com/"

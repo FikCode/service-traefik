@@ -1,0 +1,49 @@
+ ################################################################
+#
+# Configuration sample for Traefik v2.
+#
+#
+################################################################
+
+################################################################
+# Global configuration
+################################################################
+global:
+  checkNewVersion: true
+  sendAnonymousUsage: false
+
+# Define entrypoint ports and their names
+entryPoints:
+  web:
+    address: :80
+
+  websecure:
+    address: :443
+
+log:
+  # Log level
+  #
+  # Optional
+  # Default: "ERROR"
+  #
+  level: WARNING
+
+api:
+  # Enable the API in insecure mode
+  #
+  # Optional
+  # Default: false
+  #
+  insecure: true
+
+  # Enabled Dashboard
+  #
+  # Optional
+  # Default: true
+  #
+  dashboard: true
+
+providers:
+  file:
+    filename: /dynamic.yml
+    watch: true

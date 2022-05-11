@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+
+  traefik-eci:
+    image: "traefik:latest"
+    container_name: "traefik"
+    ports:
+      - "80:80"
+      - "8080:8080"
+      - "443:443"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - ./traefik.yml:/traefik.yml
+      - ./dynamic.yml:/dynamic.yml
+
+#  whoami:
+#    image: "traefik/whoami"
+#    container_name: "simple-service"
+#    labels:
+#      - "traefik.enable=true"
+#      - "traefik.http.routers.whoami.rule=Host(`host.fik.life`)"
+#      - "traefik.http.routers.whoami.entrypoints=web"
